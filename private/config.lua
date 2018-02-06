@@ -9,7 +9,7 @@ hspoon_list = {
     "FnMate",
     -- "HCalendar",
     -- "HSaria2",
-    -- "HSearch",
+    "HSearch",
     -- "KSheet",
     "SpeedMenu",
     -- "TimeFlow",
