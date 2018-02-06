@@ -20,7 +20,7 @@ function obj:init()
         type = "text",
         text = "",
         textFont = "Impact",
-        textSize = 130,
+        textSize = 135,
         textColor = {hex="#1891C3"},
         textAlignment = "center",
     }

@@ -176,7 +176,7 @@ local function makeStatsMenu(calledFromWhere)
     statsMenu = hs.menubar.new()
   end
   updateStats()
-  statsMenu:setTitle("F: " .. fanSpeed .. " | T: " .. temp .. "| BT: " .. batTemp .. "| CR: " .. cpuRate )
+  statsMenu:setTitle(hs.styledtext.new("F: " .. fanSpeed .. " | T: " .. temp .. "\n BT: " .. batTemp .. "| CR: " .. cpuRate, {font={size=9.0, color={hex="#000000"}}} ))
 end
 
 updateStatsInterval = 20
