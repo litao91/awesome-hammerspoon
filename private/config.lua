@@ -147,3 +147,41 @@ end)
 hs.hotkey.bind(modMoveFocus, 'l', function()
     hs.window.focusWindowEast()
 end)
+
+--[ fan ]-------------------------------------------------------------------
+--[[
+	my mac has a very noisy fan, this just puts the CPU temperature and fan
+	speeds in the title bar
+]]--
+
+function os.capture(cmd)
+  local f = assert(io.popen(cmd, 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  s = string.gsub(s, '^%s+', '')
+  s = string.gsub(s, '%s+$', '')
+  s = string.gsub(s, '[\n\r]+', ' ')
+  return s
+end
+
+local function updateStats()
+  fanSpeed = os.capture("/usr/local/bin/istats fan speed | cut -c24-35")
+  temp = os.capture("/usr/local/bin/istats cpu temp | cut -c24-35")
+  batTemp = os.capture("/usr/local/bin/istats battery temp | cut -c24-")
+  cpuRate = os.capture("ps -A -o %cpu | awk '{s+=$1} END {print s \"%\"}'")
+end
+
+local function makeStatsMenu(calledFromWhere)
+  if statsMenu == nil then
+    statsMenu = hs.menubar.new()
+  end
+  updateStats()
+  statsMenu:setTitle("F: " .. fanSpeed .. " | T: " .. temp .. "| BT: " .. batTemp .. "| CR: " .. cpuRate )
+end
+
+updateStatsInterval = 20
+statsMenuTimer = hs.timer.new(updateStatsInterval, makeStatsMenu)
+statsMenuTimer:start()
+
+updateStats()
+makeStatsMenu()
