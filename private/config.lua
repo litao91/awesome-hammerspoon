@@ -133,11 +133,13 @@ end
 for k, v in pairs(directionKey) do
   hs.hotkey.bind(modMovePosition, v, function()
       spoon.WinWin:moveAndResize(positionName[k])
+      hs.alert("Moved '" .. hs.window.frontmostWindow():title() .. "' to " .. positionName[k])
     end)
 end
 
 hs.hotkey.bind(modMovePosition, 'M', function()
       spoon.WinWin:moveAndResize('fullscreen')
+      hs.alert("Moved '" .. hs.window.frontmostWindow():title() .. "' to fullscreen")
   end)
 
 for k, v in pairs(directionKey) do
@@ -146,21 +148,14 @@ for k, v in pairs(directionKey) do
     end)
 end
 
-hs.hotkey.bind(modMoveFocus, 'h', function()
-    hs.window.focusWindowWest()
-end)
-
-hs.hotkey.bind(modMoveFocus, 'j', function()
-    hs.window.focusWindowSouth()
-end)
-
-hs.hotkey.bind(modMoveFocus, 'k', function()
-    hs.window.focusWindowNorth()
-end)
-
-hs.hotkey.bind(modMoveFocus, 'l', function()
-    hs.window.focusWindowEast()
-end)
+for k, v in pairs(directionKey) do 
+  hs.hotkey.bind(modMoveFocus, v, function() 
+    local fn = hs.window["focusWindow" .. directionName[k]]
+    fn()
+    local w = hs.window.frontmostWindow()
+    hs.alert("Focused '" .. w:title() .. "'")
+  end)
+end
 
 --[ fan ]-------------------------------------------------------------------
 --[[
