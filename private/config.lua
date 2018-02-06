@@ -107,14 +107,28 @@ local modMoveDisplay = {'shift', 'ctrl'}
 
 -- local directionKey = {'up', 'down', 'left', 'right'}
 local directionKey = {'h', 'j', 'k', 'l'}
-local directionName = {'left', 'down', 'up', 'right'}
+local directionName = {'West', 'South', 'North', 'East'}
 local positionName = {'halfleft', 'halfdown', 'halfup', 'halfright'}
+
+local logger = hs.logger.new("private")
 
 -- for k, v in pairs(directionKey) do
 --   hs.hotkey.bind(modMoveWindow, v, function()
 --       HS_H.focus:moveWindow({direction = v})
 --     end)
 -- end
+
+function moveWindow(dir)
+  local w = hs.window.frontmostWindow()
+  local title = w:title()
+
+  if #title > 23 then
+    title = title:sub(0, 10) .. "..." .. title:sub(#title-9)
+  end
+  local fn = w["moveOneScreen" .. dir]
+  fn(w)
+  hs.alert("Moved '" .. title .. "' " .. dir, 2)
+end
 
 for k, v in pairs(directionKey) do
   hs.hotkey.bind(modMovePosition, v, function()
@@ -128,7 +142,7 @@ hs.hotkey.bind(modMovePosition, 'M', function()
 
 for k, v in pairs(directionKey) do
   hs.hotkey.bind(modMoveDisplay, v, function()
-      spoon.WinWin:moveToScreen(directionName[k])
+      moveWindow(directionName[k])
     end)
 end
 
