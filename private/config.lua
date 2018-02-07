@@ -34,7 +34,7 @@ hsapp_list = {
     --{key = 't', name = 'Terminal'},
     {key = 'n', name = 'Microsoft OneNote'},
     {key = 'v', id = 'com.apple.ActivityMonitor'},
-    {key = 'l', name = "Lark"},
+    {key = 'l', id = "com.electron.lark"},
     {key = 'm', name = 'Mweb'},
     {key = 'y', id = 'com.apple.systempreferences'},
     {key = 'w', name = 'WeChat'},
