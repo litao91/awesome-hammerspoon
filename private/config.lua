@@ -175,9 +175,9 @@ function os.capture(cmd)
 end
 
 local function updateStats()
-  fanSpeed = os.capture("/usr/local/bin/istats fan speed | cut -c24-35")
-  temp = os.capture("/usr/local/bin/istats cpu temp | cut -c24-35")
-  batTemp = os.capture("/usr/local/bin/istats battery temp | cut -c24-")
+  fanSpeed = os.capture("/usr/local/bin/istats fan speed --no-label --no-graph")
+  temp = os.capture("/usr/local/bin/istats cpu temp --no-label --no-graph")
+  batTemp = os.capture("/usr/local/bin/istats battery temp --no-label --no-graph")
   cpuRate = os.capture("ps -A -o %cpu | awk '{s+=$1} END {print s \"%\"}'")
 end
 
