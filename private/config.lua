@@ -179,6 +179,7 @@ local function updateStats()
   temp = os.capture("/usr/local/bin/istats cpu temp --no-label --no-graph")
   batTemp = os.capture("/usr/local/bin/istats battery temp --no-label --no-graph")
   cpuRate = os.capture("ps -A -o %cpu | awk '{s+=$1} END {print s \"%\"}'")
+  ramRate = os.capture("ps -A -o %mem | awk '{s+=$1} END {print s \"%\"}'")
 end
 
 local function makeStatsMenu(calledFromWhere)
@@ -186,7 +187,7 @@ local function makeStatsMenu(calledFromWhere)
     statsMenu = hs.menubar.new()
   end
   updateStats()
-  statsMenu:setTitle(hs.styledtext.new("F: " .. fanSpeed .. " | T: " .. temp .. "\n BT: " .. batTemp .. "| CR: " .. cpuRate, {font={size=9.0, color={hex="#000000"}}} ))
+  statsMenu:setTitle(hs.styledtext.new("F: " .. fanSpeed .. " | T: " .. temp .. "\n BT: " .. batTemp .. "| CR: " .. cpuRate .. "| MR: " ..ramRate, {font={size=9.0, color={hex="#000000"}}} ))
 end
 
 updateStatsInterval = 20
