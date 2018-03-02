@@ -360,6 +360,23 @@ if string.len(hsconsole_keys[2]) > 0 then
     spoon.ModalMgr.supervisor:bind(hsconsole_keys[1], hsconsole_keys[2], "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
 end
 
+
+----------------- ActionM modal environment ------
+spoon.ModalMgr:new("actionM")
+local cmodal = spoon.ModalMgr.modal_list["actionM"]
+cmodal:bind('', 'escape', 'Deactivate actionM', function() spoon.ModalMgr:deactivate({"actionM"}) end)
+umodal:bind('', 'Q', 'Deactivate actionM', function() spoon.ModalMgr:deactivate({"actionM"}) end)
+
+-- Then we register some keybindings with modal supervisor
+hsActionM_keys = hsActionM_keys or {"alt", "B"}
+if string.len(hsActionM_keys[2]) > 0 then
+    spoon.ModalMgr.supervisor:bind(hsActionM_keys[1], hsActionM_keys[2], "Enter ActionM Environment", function()
+        spoon.ModalMgr:deactivateAll()
+        -- Show the keybindings cheatsheet once appM is activated
+        spoon.ModalMgr:activate({"actionM"}, "#FFBD2E", true)
+    end)
+end
+
 ----------------------------------------------------------------------------------------------------
 -- Finally we initialize ModalMgr supervisor
 spoon.ModalMgr.supervisor:enter()
