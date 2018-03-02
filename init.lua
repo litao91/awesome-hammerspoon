@@ -280,11 +280,10 @@ if spoon.WinWin then
     cmodal:bind('shift', 'L', 'Move Rightward', function() spoon.WinWin:stepResize("right") end, nil, function() spoon.WinWin:stepResize("right") end)
     cmodal:bind('shift', 'K', 'Move Upward', function() spoon.WinWin:stepResize("up") end, nil, function() spoon.WinWin:stepResize("up") end)
     cmodal:bind('shift', 'J', 'Move Downward', function() spoon.WinWin:stepResize("down") end, nil, function() spoon.WinWin:stepResize("down") end)
-    cmodal:bind('', 'left', 'Move to Left Monitor', function() spoon.WinWin:moveToScreen("left") end)
-    cmodal:bind('', 'right', 'Move to Right Monitor', function() spoon.WinWin:moveToScreen("right") end)
-    cmodal:bind('', 'up', 'Move to Above Monitor', function() spoon.WinWin:moveToScreen("up") end)
-    cmodal:bind('', 'down', 'Move to Below Monitor', function() spoon.WinWin:moveToScreen("down") end)
-    cmodal:bind('', 'space', 'Move to Next Monitor', function() spoon.WinWin:moveToScreen("next") end)
+    cmodal:bind('', 'left', 'Move to Left Monitor', function() moveWindow("West") end)
+    cmodal:bind('', 'right', 'Move to Right Monitor', function() moveWindow("East") end)
+    cmodal:bind('', 'up', 'Move to Above Monitor', function() moveWindow("North") end)
+    cmodal:bind('', 'down', 'Move to Below Monitor', function() moveWindow("South") end)
     cmodal:bind('', '[', 'Undo Window Manipulation', function() spoon.WinWin:undo() end)
     cmodal:bind('', ']', 'Redo Window Manipulation', function() spoon.WinWin:redo() end)
     cmodal:bind('', '`', 'Center Cursor', function() spoon.WinWin:centerCursor() end)
@@ -365,7 +364,7 @@ end
 spoon.ModalMgr:new("actionM")
 local cmodal = spoon.ModalMgr.modal_list["actionM"]
 cmodal:bind('', 'escape', 'Deactivate actionM', function() spoon.ModalMgr:deactivate({"actionM"}) end)
-umodal:bind('', 'Q', 'Deactivate actionM', function() spoon.ModalMgr:deactivate({"actionM"}) end)
+cmodal:bind('', 'Q', 'Deactivate actionM', function() spoon.ModalMgr:deactivate({"actionM"}) end)
 
 -- Then we register some keybindings with modal supervisor
 hsActionM_keys = hsActionM_keys or {"alt", "B"}
