@@ -96,7 +96,7 @@ hscheats_keys = {"alt", "S"}
 hsaclock_keys = {"alt", "T"}
 
 -- Type the URL and title of the frontmost web page open in Google Chrome or Safari.
-hstype_keys = {"alt", "B"}
+hstype_keys = {"alt", "X"}
 
 -- Toggle Hammerspoon console
 hsconsole_keys = {"alt", "Z"}
