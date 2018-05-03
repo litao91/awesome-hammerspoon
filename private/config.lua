@@ -34,7 +34,8 @@ hsapp_list = {
     --{key = 's', name = 'Safari'},
     --{key = 't', name = 'Terminal'},
     {key = 'n', name = 'Microsoft OneNote'},
-    {key = 'v', id = 'com.apple.ActivityMonitor'},
+    -- {key = 'v', id = 'com.apple.ActivityMonitor'},
+    {key = 'v', name="Alacritty"},
     {key = 'l', id = "com.electron.lark"},
     {key = 'm', name = 'Mweb'},
     {key = 'y', id = 'com.apple.systempreferences'},
@@ -196,3 +197,29 @@ statsMenuTimer:start()
 
 updateStats()
 makeStatsMenu()
+
+
+local function Chinese()
+  hs.keycodes.setMethod('Squirrel')
+end
+
+local function English()
+  hs.keycodes.currentSourceID("com.apple.keylayout.US")
+end
+
+local function set_app_input_method(app_name, set_input_method_function, event)
+  event = event or hs.window.filter.windowFocused
+
+  hs.window.filter.new(app_name)
+    :subscribe(event, function()
+                 set_input_method_function()
+              end)
+end
+
+set_app_input_method('Hammerspoon', English, hs.window.filter.windowCreated)
+set_app_input_method('Spotlight', English, hs.window.filter.windowCreated)
+set_app_input_method('iTerm2', English)
+set_app_input_method('Alacritty', English)
+set_app_input_method('Google Chrome', English)
+set_app_input_method('WeChat', Chinese)
+set_app_input_method('Lark', Chinese)
