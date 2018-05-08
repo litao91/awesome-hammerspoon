@@ -108,9 +108,9 @@ local modMovePosition = {'shift', 'option'}
 local modMoveDisplay = {'shift', 'ctrl'}
 
 -- local directionKey = {'up', 'down', 'left', 'right'}
-local directionKey = {'h', 'j', 'k', 'l'}
+local directionKey = {'h', 'j', 'k', 'l', 'y', 'o', 'u', 'i'}
 local directionName = {'West', 'South', 'North', 'East'}
-local positionName = {'halfleft', 'halfdown', 'halfup', 'halfright'}
+local positionName = {'halfleft', 'halfdown', 'halfup', 'halfright', 'cornerNW', 'cornerNE', 'cornerSW', 'cornerSE'}
 
 local logger = hs.logger.new("private")
 
