@@ -42,7 +42,7 @@ hsapp_list = {
     {key = 'w', name = 'WeChat'},
     {key = 'j', name = 'Jump Desktop'},
     {key = 't', name = 'TaskPaper'},
-    {key = 's', name = 'Querious'},
+    {key = 's', name = 'TablePlus'},
     {key = 'b', id = 'org.mozilla.firefox'},
 }
 
