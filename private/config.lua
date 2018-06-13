@@ -44,6 +44,7 @@ hsapp_list = {
     {key = 't', name = 'TaskPaper'},
     {key = 's', name = 'TablePlus'},
     {key = 'b', id = 'org.mozilla.firefox'},
+    {key = 'p', name = 'NotePlan'},
 }
 
 -- Modal supervisor keybinding, which can be used to temporarily disable ALL modal environments.
