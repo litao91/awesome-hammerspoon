@@ -153,8 +153,8 @@ for k, v in pairs(directionKey) do
     end)
 end
 
-for k, v in pairs(directionKey) do 
-  hs.hotkey.bind(modMoveFocus, v, function() 
+for k, v in pairs(directionKey) do
+  hs.hotkey.bind(modMoveFocus, v, function()
     local fn = hs.window["focusWindow" .. directionName[k]]
     fn()
     local w = hs.window.frontmostWindow()
@@ -194,7 +194,7 @@ local function makeStatsMenu(calledFromWhere)
   statsMenu:setTitle(hs.styledtext.new("F: " .. fanSpeed .. " | T: " .. temp .. "\n BT: " .. batTemp .. "| CR: " .. cpuRate .. "| MR: " ..ramRate, {font={size=9.0, color={hex="#000000"}}} ))
 end
 
-updateStatsInterval = 20
+updateStatsInterval = 5
 statsMenuTimer = hs.timer.new(updateStatsInterval, makeStatsMenu)
 statsMenuTimer:start()
 
