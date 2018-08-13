@@ -354,6 +354,15 @@ if string.len(hstype_keys[2]) > 0 then
 end
 
 ----------------------------------------------------------------------------------------------------
+-- Insert Date String
+hsdate_keys = hsdate_keys or {"alt", "D"}
+if string.len(hsdate_keys[2]) > 0 then
+  spoon.ModalMgr.supervisor:bind(hsdate_keys[1], hsdate_keys[2], "Type Date string", function() 
+    hs.eventtap.keyStrokes(os.date("%c"))
+  end)
+end
+
+----------------------------------------------------------------------------------------------------
 -- Register Hammerspoon console
 hsconsole_keys = hsconsole_keys or {"alt", "Z"}
 if string.len(hsconsole_keys[2]) > 0 then
