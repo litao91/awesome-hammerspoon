@@ -358,7 +358,7 @@ end
 hsdate_keys = hsdate_keys or {"alt", "D"}
 if string.len(hsdate_keys[2]) > 0 then
   spoon.ModalMgr.supervisor:bind(hsdate_keys[1], hsdate_keys[2], "Type Date string", function() 
-    hs.eventtap.keyStrokes(os.date("%c"))
+    hs.eventtap.keyStrokes(os.date("!%Y-%m-%d %T"))
   end)
 end
 
