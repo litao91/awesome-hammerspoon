@@ -43,8 +43,7 @@ hsapp_list = {
     {key = 'j', name = 'Jump Desktop'},
     {key = 't', name = 'TaskPaper'},
     {key = 's', name = 'TablePlus'},
-    {key = 'b', id = 'org.mozilla.firefox'},
-    {key = 'p', name = 'NotePlan'},
+    {key = 'p', name = 'PDF Expert'},
 }
 
 -- Modal supervisor keybinding, which can be used to temporarily disable ALL modal environments.
@@ -227,3 +226,4 @@ set_app_input_method('Google Chrome', English)
 set_app_input_method('WeChat', Chinese)
 set_app_input_method('Lark', Chinese)
 set_app_input_method('Jump Desktop', English)
+set_app_input_method('MWeb', Chinese)
