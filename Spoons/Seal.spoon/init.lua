@@ -3,6 +3,16 @@
 --- Pluggable launch bar
 ---
 --- Download: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/Seal.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/Seal.spoon.zip)
+---
+--- Seal includes a number of plugins, which you can choose to load (see `:loadPlugins()` below):
+---  * apps : Launch applications by name
+---  * calc : Simple calculator
+---  * rot13 : Apply ROT13 substitution cipher
+---  * safari_bookmarks : Open Safari bookmarks (this is broken since at least High Sierra)
+---  * screencapture : Lets you take screenshots in various ways
+---  * urlformats : User defined URL formats to open
+---  * useractions : User defined custom actions
+---  * vpn : Connect and disconnect VPNs (currently supports Viscosity and macOS system preferences)A
 
 local obj = {}
 obj.__index = obj
@@ -21,7 +31,7 @@ obj.plugins = {}
 obj.commands = {}
 obj.queryChangedTimer = nil
 
-obj.spoonPath = hs.spoons.script_path()
+obj.spoonPath = hs.spoons.scriptPath()
 
 --- Seal.plugin_search_paths
 --- Variable
@@ -328,3 +338,11 @@ end
 
 return obj
 
+--- === Seal.plugins ===
+---
+--- Various APIs for Seal plugins
+
+-- This isn't really shown, but it's necessary to force Seal.plugins.html to render
+--- Seal.plugins
+--- Constant
+--- This is a table containing all of the loaded plugins for Seal. You should interact with it only via documented API that the plugins expose.

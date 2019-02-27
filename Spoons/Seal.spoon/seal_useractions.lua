@@ -56,7 +56,7 @@ obj.actions = {}
 --- Seal.plugins.useractions.get_favicon
 --- Variable
 ---
---- If `true`, attempt to obtain the favicon for URLs added through the `add` command, and use it in the chooser.
+--- If `true`, attempt to obtain the favicon for URLs added through the `add` command, and use it in the chooser. Defaults to `true`
 obj.get_favicon = true
 
 -- Internal functions for storing/retrieving bookmarks in the settings database.
@@ -135,8 +135,8 @@ end
 function obj.buildChoice(action, v)
    local icon, kind
    local choice=nil
-   if type(v) == 'table' and v.keyword == nil then
-      if v.fn then
+   if type(v) == 'table' then
+     if v.fn then
          kind = 'runFunction'
       elseif v.url then
          kind = 'openURL'
@@ -224,6 +224,9 @@ end
 
 function obj.choicesActionKeyword(action, def, query)
    local choices = {}
+   if query == ".*" then
+     query = ""
+   end
    local choice = {
       text = def.keyword .. " " .. query,
       subText = action,

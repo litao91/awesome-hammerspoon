@@ -51,11 +51,11 @@ end
 --- Returns:
 ---  * None
 function obj:show()
-    circle = self.circle
-    timer = self.timer
+    local circle = self.circle
+    local timer = self.timer
 
     if circle then
-        circle:delete()
+        circle:hide(0.5)
         if timer then
             timer:stop()
         end
@@ -79,7 +79,7 @@ function obj:show()
 
     self.timer = hs.timer.doAfter(3, function()
         self.circle:hide(0.5)
-        hs.timer.doAfter(0.6, function() self.circle:delete() end)
+        hs.timer.doAfter(0.6, function() self.circle:delete() self.circle = nil end)
     end)
 
     return self
