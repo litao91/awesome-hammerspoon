@@ -7,6 +7,7 @@ hspoon_list = {
     "ClipShow",
     -- "CountDown",
     "FnMate",
+    "Seal",
     -- "HCalendar",
     -- "HSaria2",
     "HSearch",

@@ -99,6 +99,9 @@ end
 ---  * Some plugins may immediately begin doing background work (e.g. Spotlight searches)
 function obj:loadPluginFromFile(plugin_name, file)
    local f,err = loadfile(file)
+   if err then
+     print(err)
+   end
    if f~= nil then
       local plugin = f()
       plugin.seal = self

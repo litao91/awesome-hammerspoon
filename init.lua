@@ -204,6 +204,19 @@ if spoon.HSearch then
     end
 end
 
+if spoon.Seal then
+  print("loading seal")
+  spoon.Seal:loadPlugins({"apps", "vpn", "screencapture", "safari_bookmarks", "calc", "useractions", "qalc"})
+  spoon.Seal:start()
+  seal_keys = seal_keys or {"alt", "Space"}
+  if string.len(seal_keys[2]) > 0 then
+      spoon.ModalMgr.supervisor:bind(seal_keys[1], seal_keys[2], 'Launch Hammerspoon Seal', function() spoon.Seal:toggle() end)
+  end
+  --spoon.Seal:loadPlugins({"apps", "vpn", "screencapture", "safari_bookmarks", "calc", "useractions"})
+  --spoon.Seal:bindHotkeys({show={{"cmd"}, "Space"}})
+  --spoon.Seal:start()
+end
+
 ----------------------------------------------------------------------------------------------------
 -- Register Hammerspoon API manual: Open Hammerspoon manual in default browser
 hsman_keys = hsman_keys or {"alt", "H"}
