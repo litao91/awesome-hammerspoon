@@ -29,7 +29,7 @@ function obj.runQalc(query)
   end
 
   local choice = {}
-  local cmd = "/usr/local/bin/qalc " .. query
+  local cmd = "/usr/local/bin/qalc \"" .. query .. "\""
   print("CMD: " .. cmd)
   local result = hs.execute(cmd)
   choice["text"] = result
