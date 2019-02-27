@@ -31,24 +31,23 @@ function obj:youdaoInstantTrans(querystr)
         local encoded_query = hs.http.encodeForQuery(querystr)
         local query_url = youdao_baseurl .. encoded_query
 
-        hs.http.asyncGet(query_url, nil, function(status, data)
-            if status == 200 then
-                if pcall(function() hs.json.decode(data) end) then
-                    local decoded_data = hs.json.decode(data)
-                    if decoded_data.errorCode == 0 then
-                        local basictrans = basic_extract(decoded_data.basic)
-                        local webtrans = web_extract(decoded_data.web)
-                        local dictpool = hs.fnutils.concat(basictrans, webtrans)
-                        if #dictpool > 0 then
-                            local chooser_data = hs.fnutils.imap(dictpool, function(item)
-                                return {text=item, output="clipboard", arg=item}
-                            end)
-                            return chooser_data
-                        end
+        status, data = hs.http.get(query_url, "")
+        if status == 200 then
+            if pcall(function() hs.json.decode(data) end) then
+                local decoded_data = hs.json.decode(data)
+                if decoded_data.errorCode == 0 then
+                    local basictrans = basic_extract(decoded_data.basic)
+                    local webtrans = web_extract(decoded_data.web)
+                    local dictpool = hs.fnutils.concat(basictrans, webtrans)
+                    if #dictpool > 0 then
+                        local chooser_data = hs.fnutils.imap(dictpool, function(item)
+                            return {text=item, output="clipboard", arg=item}
+                        end)
+                        return chooser_data
                     end
                 end
             end
-        end)
+        end
     end
 end
 
