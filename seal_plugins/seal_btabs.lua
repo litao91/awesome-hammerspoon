@@ -20,7 +20,19 @@ function obj.browserTabsRequest(query)
     local chooser_data = {}
     local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
     if #chrome_running > 0 then
-        local stat, data= hs.osascript.applescript('tell application "Google Chrome"\nset winlist to tabs of windows\nset tablist to {}\nrepeat with i in winlist\nif (count of i) > 0 then\nrepeat with currenttab in i\nset tabinfo to {name of currenttab as unicode text, URL of currenttab}\ncopy tabinfo to the end of tablist\nend repeat\nend if\nend repeat\nreturn tablist\nend tell')
+        local stat, data= hs.osascript.applescript([[tell application "Google Chrome"
+set winlist to tabs of windows
+set tablist to {}
+repeat with i in winlist
+if (count of i) > 0 then
+repeat with currenttab in i
+set tabinfo to {name of currenttab as unicode text, URL of currenttab}
+copy tabinfo to the end of tablist
+end repeat
+end if
+end repeat
+return tablist
+end tell]])
         if stat then
             for idx,val in pairs(data) do
                 if string.match(val[1]:lower(), query:lower()) then
@@ -34,8 +46,68 @@ function obj.browserTabsRequest(query)
     return chooser_data
 end
 
+function chrome_active_tab_with_name(name)
+    return function()
+        hs.osascript.javascript([[
+            // below is javascript code
+            var chrome = Application('Google Chrome');
+            chrome.activate();
+            var wins = chrome.windows;
+
+            // loop tabs to find a web page with a title of <name>
+            function main() {
+                for (var i = 0; i < wins.length; i++) {
+                    var win = wins.at(i);
+                    var tabs = win.tabs;
+                    for (var j = 0; j < tabs.length; j++) {
+                    var tab = tabs.at(j);
+                    tab.title(); j;
+                    if (tab.title().indexOf(']] .. name .. [[') > -1) {
+                            win.activeTabIndex = j + 1;
+                            return;
+                        }
+                    }
+                }
+            }
+            main();
+            // end of javascript
+        ]])
+    end
+end
+
+function chrome_active_tab_with_url(url)
+    return function()
+        hs.osascript.javascript([[
+            // below is javascript code
+            var chrome = Application('Google Chrome');
+            chrome.activate();
+            var wins = chrome.windows;
+
+            // loop tabs to find a web page with a title of <name>
+            function main() {
+                for (var i = 0; i < wins.length; i++) {
+                    var win = wins.at(i);
+                    var tabs = win.tabs;
+                    for (var j = 0; j < tabs.length; j++) {
+                    var tab = tabs.at(j);
+                    tab.title(); j;
+                    if (tab.url().indexOf(']] .. url .. [[') > -1) {
+                            win.activeTabIndex = j + 1;
+                            return;
+                        }
+                    }
+                }
+            }
+            main();
+            // end of javascript
+        ]])
+    end
+end
+
 function obj.completionCallback(rowInfo)
+  print(rowInfo["arg"])
   if rowInfo["type"] == "chrome" then
+    -- chrome_active_tab_with_url(rowInfo["arg"])
     hs.urlevent.openURLWithBundle(rowInfo["arg"], "com.google.Chrome")
   end
 end
