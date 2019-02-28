@@ -54,7 +54,7 @@ function obj.runYoudao(query)
         local dictpool = hs.fnutils.concat(basictrans, webtrans)
         if #dictpool > 0 then
           local chooser_data = hs.fnutils.imap(dictpool, function(item)
-            return {text=item, type="clipboard", arg=item}
+            return {text=item, type="clipboard", arg=item, plugin=obj.__name}
           end)
           return chooser_data
         end

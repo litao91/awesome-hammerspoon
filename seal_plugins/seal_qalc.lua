@@ -34,6 +34,7 @@ function obj.runQalc(query)
   choice["text"] = result
   choice["subText"] = "Copy result to clicpboard"
   choice["type"] = "copyToClipboard"
+  choice["plugin"] = obj.__name
   table.insert(choices, choice)
   return choices
 end
