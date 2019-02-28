@@ -54,7 +54,7 @@ function obj.runYoudao(query)
         local dictpool = hs.fnutils.concat(basictrans, webtrans)
         if #dictpool > 0 then
           local chooser_data = hs.fnutils.imap(dictpool, function(item)
-            return {text=item, output="clipboard", arg=item}
+            return {text=item, type="clipboard", arg=item}
           end)
           return chooser_data
         end
@@ -64,9 +64,9 @@ function obj.runYoudao(query)
 end
 
 function obj.completionCallback(rowInfo)
-    if rowInfo["type"] == "copyToClipboard" then
-        hs.pasteboard.setContents(rowInfo["text"])
-    end
+  if rowInfo["type"] == "clipboard" then
+      hs.pasteboard.setContents(rowInfo["text"])
+  end
 end
 
 return obj
