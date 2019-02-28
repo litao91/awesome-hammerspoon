@@ -44,10 +44,8 @@ function obj.runYoudao(query)
   else
     local encoded_query = hs.http.encodeForQuery(query)
     local query_url = youdao_baseurl .. encoded_query
-    print("youdao query: " .. query_url)
 
     status, data = hs.http.get(query_url, nil)
-    print(data)
     if status == 200 then
       local decoded_data = hs.json.decode(data)
       if decoded_data.errorCode == 0 then
