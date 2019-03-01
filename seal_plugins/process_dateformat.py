@@ -41,6 +41,7 @@ def alfred_items_for_value(value):
         text=str(item_value),
         subText=u'UTC Timestamp',
         arg= item_value,
+            plugin='seal_dateformat',
     ))
     index += 1
 
@@ -63,6 +64,7 @@ def alfred_items_for_value(value):
             text=str(item_value),
             subText=description,
             arg=item_value,
+            plugin='seal_dateformat',
         ))
         index += 1
 
