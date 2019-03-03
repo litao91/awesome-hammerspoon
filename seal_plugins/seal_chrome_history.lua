@@ -1,7 +1,7 @@
 local obj = {}
 obj.__index = obj
 
-obj.__name = "seal_chistory"
+obj.__name = "seal_chrome_history"
 
 function obj:commands()
   return {chis= {
