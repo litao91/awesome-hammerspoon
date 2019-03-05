@@ -16,7 +16,7 @@ def load_all_bookmarks(data):
                 else:
                     result.append({
                         'text': child['name'],
-                        'subtext': child['url'],
+                        'subText': child['url'],
                         'arg': child['url'],
                         'plugin': 'seal_chrome_bookmarks',
                     })
