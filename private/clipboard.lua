@@ -15,7 +15,7 @@
 -- Feel free to change those settings
 local frequency = 0.8 -- Speed in seconds to check for clipboard changes. If you check too frequently, you will loose performance, if you check sparsely you will loose copies
 local hist_size = 100 -- How many items to keep on history
-local label_length = 70 -- How wide (in characters) the dropdown menu should be. Copies larger than this will have their label truncated and end with "�" (unicode for elipsis ...)
+local label_length = 70 -- How wide (in characters) the dropdown menu should be. Copies larger than this will have their label truncated and end with "…" (unicode for elipsis ...)
 local honor_clearcontent = false --asmagill request. If any application clears the pasteboard, we also remove it from the history https://groups.google.com/d/msg/hammerspoon/skEeypZHOmM/Tg8QnEj_N68J
 local pasteOnSelect = false -- Auto-type on click
 
@@ -32,10 +32,10 @@ local clipboard_history = settings.get("so.victor.hs.jumpcut") or {} --If no his
 -- Append a history counter to the menu
 function setTitle()
    if (#clipboard_history == 0) then
-      jumpcut:setTitle("?") -- Unicode magic
+      jumpcut:setTitle("✂") -- Unicode magic
    else
-      jumpcut:setTitle("?") -- Unicode magic
-      --      jumpcut:setTitle("? ("..#clipboard_history..")") -- updates the menu counter
+      jumpcut:setTitle("✂") -- Unicode magic
+      --      jumpcut:setTitle("✂ ("..#clipboard_history..")") -- updates the menu counter
    end
 end
 
@@ -90,7 +90,7 @@ populateMenu = function(key)
    else
       for k,v in pairs(clipboard_history) do
          if (string.len(v) > label_length) then
-            table.insert(menuData,1, {title=string.sub(v,0,label_length).."�", fn = function() putOnPaste(v,key) end }) -- Truncate long strings
+            table.insert(menuData,1, {title=string.sub(v,0,label_length).."…", fn = function() putOnPaste(v,key) end }) -- Truncate long strings
          else
             table.insert(menuData,1, {title=v, fn = function() putOnPaste(v,key) end })
          end -- end if else
@@ -100,7 +100,7 @@ populateMenu = function(key)
    table.insert(menuData, {title="-"})
    table.insert(menuData, {title="Clear All", fn = function() clearAll() end })
    if (key.alt == true or pasteOnSelect) then
-      table.insert(menuData, {title="Direct Paste Mode ?", disabled=true})
+      table.insert(menuData, {title="Direct Paste Mode ✍", disabled=true})
    end
    return menuData
 end

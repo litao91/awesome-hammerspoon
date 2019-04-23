@@ -25,6 +25,7 @@ else
     end
 end
 require('private/clipboard')
+require('private/weather')
 
 hsreload_keys = hsreload_keys or {{"cmd", "shift", "ctrl"}, "R"}
 if string.len(hsreload_keys[2]) > 0 then
