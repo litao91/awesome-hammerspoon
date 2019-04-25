@@ -28,18 +28,21 @@ function getWeather()
          return
       end
       rawjson = hs.json.decode(body)
+      print("Updating Weather")
       city = rawjson.city
       menuData = {}
       for k, v in pairs(rawjson.data) do
          if k == 1 then
             menubar:setTitle(weaEmoji[v.wea_img])
             titlestr = string.format("%s %s %s 🌡️%s 💧%s 💨%s 🌬 %s %s", city,weaEmoji[v.wea_img],v.day, v.tem, v.humidity, v.air, v.win_speed, v.wea)
+            print(titlestr);
             item = { title = titlestr }
             table.insert(menuData, item)
             table.insert(menuData, {title = '-'})
          else
             -- titlestr = string.format("%s %s %s %s", v.day, v.wea, v.tem, v.win_speed)
             titlestr = string.format("%s %s %s 🌡️%s 🌬%s %s", city, weaEmoji[v.wea_img],v.day, v.tem, v.win_speed, v.wea)
+            print(titlestr);
             item = { title = titlestr }
             table.insert(menuData, item)
          end
@@ -51,4 +54,4 @@ end
 menubar:setTitle('⌛')
 getWeather()
 updateMenubar()
-hs.timer.doEvery(3600, getWeather)
+hs.timer.doEvery(900, getWeather)
