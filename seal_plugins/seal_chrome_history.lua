@@ -25,7 +25,6 @@ function obj.runChromeHistory(query)
   local script = os.getenv("HOME") .. "/.hammerspoon/seal_plugins/query_chrome_history"
   local cmd = script .. " \"" .. query .. "\""
   local r = hs.execute(cmd)
-  print(r)
   local decoded_data = hs.json.decode(r)
   return decoded_data
 end
