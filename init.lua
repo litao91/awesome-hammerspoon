@@ -207,7 +207,7 @@ end
 
 if spoon.Seal then
   print("loading seal")
-  spoon.Seal:loadPlugins({"apps", "screencapture", "safari_bookmarks", "calc", "useractions", "qalc", "youdao", "btabs", "dateformat", "chrome_history", "chrome_bookmarks", "task"})
+  spoon.Seal:loadPlugins({"apps", "screencapture", "safari_bookmarks", "calc", "useractions", "qalc", "youdao", "btabs", "dateformat", "chrome_history", "chrome_bookmarks", "task", "pasteboard" })
   spoon.Seal:start()
   seal_keys = seal_keys or {"alt", "Space"}
   if string.len(seal_keys[2]) > 0 then

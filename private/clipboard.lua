@@ -121,8 +121,8 @@ function storeCopy()
 end
 
 --Checks for changes on the pasteboard. Is it possible to replace with eventtap?
-local timer = hs.timer.new(frequency, storeCopy, true)
-timer:start()
+local cp_timer = hs.timer.new(frequency, storeCopy, true)
+cp_timer:start()
 
 setTitle() --Avoid wrong title if the user already has something on his saved history
 jumpcut:setMenu(populateMenu)
