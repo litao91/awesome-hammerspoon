@@ -31,12 +31,8 @@
           "Binds hotkeys for Emojis",
           ""
         ],
-        "parameters" : [
-          " * mapping - A table containing hotkey modifier\/key details for the following items:",
-          "  * toggle - This will toggle the emoji chooser",
-          ""
-        ],
         "desc" : "Binds hotkeys for Emojis",
+        "name" : "bindHotkeys",
         "notes" : [
 
         ],
@@ -46,10 +42,17 @@
           " * The Emojis object"
         ],
         "def" : "Emojis:bindHotkeys(mapping)",
-        "name" : "bindHotkeys"
+        "parameters" : [
+          " * mapping - A table containing hotkey modifier\/key details for the following items:",
+          "  * toggle - This will toggle the emoji chooser",
+          ""
+        ]
       }
     ],
     "Command" : [
+
+    ],
+    "Field" : [
 
     ],
     "items" : [
@@ -59,12 +62,8 @@
           "Binds hotkeys for Emojis",
           ""
         ],
-        "parameters" : [
-          " * mapping - A table containing hotkey modifier\/key details for the following items:",
-          "  * toggle - This will toggle the emoji chooser",
-          ""
-        ],
         "desc" : "Binds hotkeys for Emojis",
+        "name" : "bindHotkeys",
         "notes" : [
 
         ],
@@ -74,11 +73,12 @@
           " * The Emojis object"
         ],
         "def" : "Emojis:bindHotkeys(mapping)",
-        "name" : "bindHotkeys"
+        "parameters" : [
+          " * mapping - A table containing hotkey modifier\/key details for the following items:",
+          "  * toggle - This will toggle the emoji chooser",
+          ""
+        ]
       }
-    ],
-    "Field" : [
-
     ],
     "name" : "Emojis"
   }
