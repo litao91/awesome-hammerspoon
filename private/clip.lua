@@ -38,7 +38,8 @@ local utf8     = require("hs.utf8")
 local settings = require("hs.settings")
 local pb       = require("hs.pasteboard")
 local timer    = require("hs.timer")
-local menubar  = require("hs.menubar")
+-- local menubar  = require("hs.menubar")
+local menubar  = require("hs._asm.guitk.menubar")
 local eventtap = require("hs.eventtap")
 local stext    = require("hs.styledtext")
 
@@ -275,8 +276,7 @@ local renderNewClipperMenu = function(mods)
                                 fn = function()
                                     autoSave = not autoSave
                                     saveHistoryAndSettings(nil)
-    100 14609  100 14609    0     0  10091      0  0:00:01  0:00:01 --:--:-- 10096
-                            end })
+                                end })
         table.insert(results, { title = "Type selection instead of updating clipboard", checked = typeOnSelect,
                                 fn = function()
                                     typeOnSelect = not typeOnSelect

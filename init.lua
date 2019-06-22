@@ -24,8 +24,8 @@ else
         require('private/config')
     end
 end
-require('private/clipboard')
-require('private/weather')
+-- require('private/clip')
+-- require('private/weather')
 
 hsreload_keys = hsreload_keys or {{"cmd", "shift", "ctrl"}, "R"}
 if string.len(hsreload_keys[2]) > 0 then
@@ -111,6 +111,11 @@ if string.len(hsappM_keys[2]) > 0 then
         spoon.ModalMgr:activate({"appM"}, "#FFBD2E", true)
     end)
 end
+
+if spoon.TextClipboardHistory then
+  spoon.TextClipboardHistory:start()
+end
+
 
 ----------------------------------------------------------------------------------------------------
 -- clipshowM modal environment
