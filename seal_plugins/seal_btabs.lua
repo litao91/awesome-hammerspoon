@@ -5,11 +5,19 @@ obj.__name = "seal_btabs"
 
 
 function obj:bare()
-  return self.browserTabsRequest
+  return nil
 end
 
 function obj:commands()
-  return {}
+  return {
+    btabs = {
+      cmd = "btabs",
+      fn = obj.browserTabsRequest,
+      name = "Chrome Tabs",
+      description = "Search the opening tabs of chrome",
+      plugin = obj.__name,
+    }
+  }
 end
 
 
