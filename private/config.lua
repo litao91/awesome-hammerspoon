@@ -23,10 +23,10 @@ hspoon_list = {
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
 hsapp_list = {
     -- {key = 'a', name = 'Atom'},
-    {key = 'd', id = 'org.mozilla.Firefox'},
-    {key = 'c', id = 'com.google.Chrome'},
-    {key = 'e', id = 'com.microsoft.Edge.Dev'},
-    -- {key = 'd', name = 'ShadowsocksX'},
+    {key = 'd', name = 'qutebrowser'},
+    -- {key = 'c', id = 'com.google.Chrome'},
+    {key = 'c', id = 'com.microsoft.edgemac.Beta'},
+    {key = 'e', id = 'org.mozilla.Firefox'},
     --{key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Finder'},
     {key = 'i', name = 'iTerm'},
@@ -46,7 +46,7 @@ hsapp_list = {
     {key = 'w', name = 'WeChat'},
     {key = 'j', name = 'Jump Desktop'},
     {key = 't', name = 'TaskPaper'},
-    {key = 's', name = 'TablePlus'},
+    {key = 's', name = 'Sequel Pro'},
     {key = 'p', name = 'PDF Expert'},
 }
 
