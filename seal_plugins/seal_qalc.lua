@@ -29,8 +29,11 @@ function obj.runQalc(query)
   end
 
   local choice = {}
-  local cmd = "/usr/local/bin/qalc \"" .. query .. "\""
-  local result = hs.execute(cmd)
+  local cmd = "qalc -u8 -t " .. query .. ""
+  local handle = io.popen(cmd)
+  local result = handle:read("*a")
+  print(result)
+  handle:close()
   choice["text"] = result
   choice["subText"] = "Copy result to clicpboard"
   choice["type"] = "copyToClipboard"

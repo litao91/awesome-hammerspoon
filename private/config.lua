@@ -7,7 +7,7 @@ hspoon_list = {
     "ClipShow",
     -- "CountDown",
     "FnMate",
-    "Seal",
+    -- "Seal",
     -- "HCalendar",
     -- "HSaria2",
     "HSearch",
@@ -25,7 +25,7 @@ hsapp_list = {
     -- {key = 'a', name = 'Atom'},
     {key = 'd', name = 'qutebrowser'},
     -- {key = 'c', id = 'com.google.Chrome'},
-    {key = 'c', id = 'com.microsoft.edgemac.Beta'},
+    {key = 'c', id = 'com.microsoft.edgemac.Dev'},
     {key = 'e', id = 'org.mozilla.Firefox'},
     --{key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Finder'},
@@ -48,6 +48,8 @@ hsapp_list = {
     {key = 't', name = 'TaskPaper'},
     {key = 's', name = 'Sequel Pro'},
     {key = 'p', name = 'PDF Expert'},
+    {key = 'k', name = 'Kitty'},
+    {key = 'z', name = 'Zotero'},
 }
 
 -- Modal supervisor keybinding, which can be used to temporarily disable ALL modal environments.
