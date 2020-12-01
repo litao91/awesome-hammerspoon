@@ -29,7 +29,8 @@ hsapp_list = {
     {key = 'e', id = 'org.mozilla.Firefox'},
     --{key = 'e', name = 'Emacs'},
     {key = 'f', name = 'Finder'},
-    {key = 'i', name = 'iTerm'},
+    -- {key = 'i', name = 'iTerm'},
+    {key = 'i', name = 'com.jetbrains.intellij.ce'},
   --  {key = 'k', name = 'KeyCastr'},
  --   {key = 'l', name = 'Sublime Text'},
     --{key = 'o', name = 'LibreOffice'},
@@ -40,7 +41,7 @@ hsapp_list = {
     {key = 'n', name = 'Microsoft OneNote'},
     -- {key = 'v', id = 'com.apple.ActivityMonitor'},
     {key = 'v', name="Alacritty"},
-    {key = 'l', id = "com.electron.lark"},
+    {key = 'l', id = "com.alibaba.DingTalkMac"},
     {key = 'm', name = 'Mweb'},
     {key = 'y', id = 'com.apple.systempreferences'},
     {key = 'w', name = 'WeChat'},
@@ -184,9 +185,9 @@ function os.capture(cmd)
 end
 
 local function updateStats()
-  fanSpeed = os.capture("/usr/local/bin/istats fan speed --no-label --no-graph")
-  temp = os.capture("/usr/local/bin/istats cpu temp --no-label --no-graph")
-  batTemp = os.capture("/usr/local/bin/istats battery temp --no-label --no-graph")
+  fanSpeed = os.capture("/usr/local/lib/ruby/gems/2.7.0/bin/istats fan speed --no-label --no-graph")
+  temp = os.capture("/usr/local/lib/ruby/gems/2.7.0/bin/istats cpu temp --no-label --no-graph")
+  batTemp = os.capture("/usr/local/lib/ruby/gems/2.7.0/bin/istats battery temp --no-label --no-graph")
   cpuRate = os.capture("ps -A -o %cpu | awk '{s+=$1} END {print s \"%\"}'")
   ramRate = os.capture("ps -A -o %mem | awk '{s+=$1} END {print s \"%\"}'")
 end
