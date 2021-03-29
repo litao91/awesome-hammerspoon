@@ -79,7 +79,7 @@ hswhints_keys = {"alt", "tab"}
 hsappM_keys = {"alt", "A"}
 
 -- clipshowM environment keybinding: System clipboard reader
-hsclipsM_keys = {"alt", "C"}
+-- hsclipsM_keys = {"alt", "C"}
 
 -- Toggle the display of aria2 frontend
 hsaria2_keys = {"alt", "D"}
